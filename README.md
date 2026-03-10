@@ -44,7 +44,7 @@ sbatch scripts/1_aHISplex_noImputation.sh   --in-dir   path/to/your/bcf_or_vcf_s
                                             --a-dir    path/to/your/aHISplex_installed_dir \
                                             --out-dir  path/to/your/output_dir             \
                                             --ref GRCh37
-##Manual page if you do: bash scripts/1_aHISplex_noImputation.sh --help
+## Manual page if you do: bash scripts/1_aHISplex_noImputation.sh --help
 ```
 Upload the output (HISplex41_upload.csv) [here](https://hirisplex.erasmusmc.nl/). Download/save the resulting phenotype probability output file.
 >![where_to_upload](where_to_give_csv.jpg)
