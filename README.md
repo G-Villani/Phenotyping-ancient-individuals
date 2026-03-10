@@ -18,6 +18,9 @@ Then follow the tutorial "Imputation using 1000GP reference panel"
 ### aHISplex phenotyping
 The official guide is [here](https://github.com/zmaroti/aHISplex), but it is currently outdated. 
 To install and build, we can use a conda environment and then :
+> [!WARNING]
+> The imputation software is not important, but the input must be phased, split by chromosome (chr1–chr22), and in VCF or BCF format.
+
 ```sh
 conda create -n aHISplex_env -c conda-forge go bcftools make
 conda activate aHISplex_env
