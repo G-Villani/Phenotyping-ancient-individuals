@@ -5,7 +5,9 @@ This is a tutorial to predict the visible traits (hair, eye and skin colors) in 
 >Simone Rubinacci, Robin J. Hofmeister, Bárbara Sousa da Mota & Olivier Delaneau: **Imputation of low-coverage sequencing data from 150,119 UK Biobank genomes.**
 >
 >doi: [https://doi.org/10.1038/s41588-023-01438-3](https://doi.org/10.1038/s41588-023-01438-3)
->
+
+<br>
+
 >Zoltán Maróti, Emil Nyerki, Tibor Török, Gergely István Varga, Tibor Kalmár: **Robust imputation-based method for eye, hair, and skin colour prediction from low-coverage ancient DNA**
 >
 >doi: [https://doi.org/10.1038/s41598-026-38372-3](https://doi.org/10.1038/s41598-026-38372-3)
