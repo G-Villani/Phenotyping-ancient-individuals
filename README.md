@@ -18,9 +18,6 @@ Then follow the tutorial "Imputation using 1000GP reference panel"
 ### aHISplex phenotyping
 The official guide is [here](https://github.com/zmaroti/aHISplex), but it is currently outdated. 
 To install and build, we can use a conda environment and then :
-> [!WARNING]
-> The imputation software is not important, but the input must be phased, split by chromosome (chr1–chr22), and in VCF or BCF format.
-
 ```sh
 conda create -n aHISplex_env -c conda-forge go bcftools make
 conda activate aHISplex_env
@@ -31,6 +28,9 @@ make
 ```
 Then, there are two ways: either we follow the quickstart already available, or we start from already imputed data (BCF/VCF) (Note: 1 of the 41 variants, rs312262906, extremely rare (global MAF = 0.00078), is set at 0 in this case).
 Assuming we have already imputed data, we use the modified script 1_aHISplex_noImputation.sh:
+> [!WARNING]
+> The imputation software is not important, but the input must be phased, split by chromosome (chr1–chr22), and in VCF or BCF format.
+
 ```sh
 sbatch scripts/1_aHISplex_noImputation.sh   --in-dir path/to/your/bcf_or_vcf_s             \
                                             --prefix   common_input_name_before_CHR        \
