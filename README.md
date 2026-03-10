@@ -38,6 +38,7 @@ sbatch scripts/1_aHISplex_noImputation.sh   --in-dir path/to/your/bcf_or_vcf_s  
 ```
 Upload the output (HISplex41_upload.csv) [here](https://hirisplex.erasmusmc.nl/). Download/save the resulting phenotype probability output file.
 >![where_to_upload](where_to_give_csv.jpg)
+>
 Then we merge input and output:
 ```sh
 conda activate any_env_with_R ##but better if dplyr already present
