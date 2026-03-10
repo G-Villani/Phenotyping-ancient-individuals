@@ -161,6 +161,31 @@ fi
 NVARIANTS=$(wc -l < "$OUT_DIR/HISplex_variants.tsv")
 echo "  Found $NVARIANTS variant lines"
 
+cut -f1,2 "$OUT_DIR/HISplex_variants.tsv" | sort > "$OUT_DIR/found_sites.tmp"
+sort "$SITES" > "$OUT_DIR/expected_sites.tmp"
+
+comm -23 "$OUT_DIR/expected_sites.tmp" "$OUT_DIR/found_sites.tmp" \
+> "$OUT_DIR/missing_sites.txt"
+
+awk 'NR==FNR{
+    key=$1"\t"$2
+    missing[key]=1
+    next
+}
+{
+    key=$2"\t"$3
+    if(key in missing){
+        print $1
+    }
+}' "$OUT_DIR/missing_sites.txt" "$TRANS" \
+> "$OUT_DIR/missing_markers.txt"
+
+nl -ba "$TRANS" | awk '{print $1,$2}' > "$OUT_DIR/marker_index.txt"
+
+grep -F -f "$OUT_DIR/missing_markers.txt" "$OUT_DIR/marker_index.txt" \
+| awk '{print $1+1}' \
+> "$OUT_DIR/missing_columns.txt"
+
 # ─── STEP 3: convert to HIrisPlex-S CSV ──────────────────────────────────────
 echo "* Converting to HIrisPlex-S allele counts..."
 
@@ -171,6 +196,35 @@ if [ $? -ne 0 ]; then
     echo "ERROR: transToHISplex failed"
     exit 1
 fi
+
+echo "* Missing markers:"
+cat "$OUT_DIR/missing_markers.txt"
+
+echo "* Corresponding CSV columns:"
+cat "$OUT_DIR/missing_columns.txt"
+
+echo "* Correcting columns corresponding to missing SNPs..."
+
+awk -F',' '
+BEGIN{
+    OFS=","
+    while((getline col < "'"$OUT_DIR/missing_columns.txt"'")>0){
+        bad[col]=1
+    }
+}
+NR==1{print;next}
+{
+    for(i in bad){
+        if($i==0){
+            $i="NA"
+        }
+    }
+    print
+}
+' "$OUT_DIR/HISplex41_upload.csv" \
+> "$OUT_DIR/HISplex41_upload_fixed.csv"
+
+mv "$OUT_DIR/HISplex41_upload_fixed.csv" "$OUT_DIR/HISplex41_upload.csv"
 
 NSAMPLES=$(tail -n +2 "$OUT_DIR/HISplex41_upload.csv" | wc -l)
 echo "* Output: $OUT_DIR/HISplex41_upload.csv ($NSAMPLES samples)"
