@@ -21,7 +21,7 @@ Then follow the tutorial "Imputation using 1000GP reference panel"
 The official guide is [here](https://github.com/zmaroti/aHISplex), but it is currently outdated. 
 To install and build, we can use a conda environment and then :
 ```sh
-conda create -n aHISplex_env -c conda-forge go bcftools make
+conda create -n aHISplex_env -c conda-forge -c bioconda go bcftools make
 conda activate aHISplex_env
 cd your_chosen_dir
 git clone https://github.com/zmaroti/aHISplex.git
