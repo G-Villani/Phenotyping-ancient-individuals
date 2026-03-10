@@ -31,7 +31,7 @@ EOF
 
 # ─── DEFAULTS ─────────────────────────────────────────────────────────────────
 IN_DIR="/XXX/Imputation/GLIMPSE2/GLIMPSE2_ligate"
-PREFIX="XXX_all_imputed_"
+PREFIX=""
 SUFFIX="_ligated.bcf"
 A_DIR="/XXX/Phenotype/aHISplex"
 OUT_DIR="aHISplex_results"
