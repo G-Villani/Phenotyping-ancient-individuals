@@ -27,6 +27,9 @@ cd your_chosen_dir
 git clone https://github.com/zmaroti/aHISplex.git
 cd aHISplex
 make
+cd ..
+git clone https://github.com/G-Villani/Phenotyping-ancient-individuals.git
+cd Phenotyping-ancient-individuals
 ```
 Then, there are two ways: either we follow the quickstart already available, or we start from already imputed data (BCF/VCF) (Note: 1 of the 41 variants, rs312262906, extremely rare (global MAF = 0.00078), is set at 0 in this case).
 
@@ -41,6 +44,7 @@ sbatch scripts/1_aHISplex_noImputation.sh   --in-dir   path/to/your/bcf_or_vcf_s
                                             --a-dir    path/to/your/aHISplex_installed_dir \
                                             --out-dir  path/to/your/output_dir             \
                                             --ref GRCh37
+##Manual page if you do: bash scripts/1_aHISplex_noImputation.sh --help
 ```
 Upload the output (HISplex41_upload.csv) [here](https://hirisplex.erasmusmc.nl/). Download/save the resulting phenotype probability output file.
 >![where_to_upload](where_to_give_csv.jpg)
