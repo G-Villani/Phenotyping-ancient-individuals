@@ -31,8 +31,15 @@ cd ..
 git clone https://github.com/G-Villani/Phenotyping-ancient-individuals.git
 cd Phenotyping-ancient-individuals
 ```
-Then, there are two ways: either we follow the quickstart already available, or we start from already imputed data (BCF/VCF) (Note: 1 of the 41 variants, rs312262906, extremely rare (global MAF = 0.00078), is set at 0 in this case).
+Then, there are two ways to proceed:
 
+**Option A – Starting from raw/low-coverage BAM files (full pipeline):**
+Follow the [aHISplex quickstart](https://github.com/zmaroti/aHISplex) which includes GLIMPSE2 imputation (very fast)(you need to install GLIMPSE2). Then go to [Step 2](#step-2--upload-merge-and-classify) .
+
+**Option B – Starting from already imputed data (BCF/VCF):**
+Use the modified script below (Note: 1 of the 41 variants, rs312262906, extremely rare (global MAF = 0.00078), is set at 0 in this case). See [Step 1](#step-1--extract-hirisplex-s-variants) .
+
+## Step 1 – Extract HIrisPlex-S variants
 Assuming we have already imputed data, we use the modified script 1_aHISplex_noImputation.sh:
 > [!WARNING]
 > The imputation software used is not important, but the input must be phased, split by chromosome (chr1–chr22), and in VCF or BCF format.
@@ -46,6 +53,8 @@ sbatch scripts/1_aHISplex_noImputation.sh   --in-dir   path/to/your/bcf_or_vcf_s
                                             --ref GRCh37
 ## Manual page if you do: bash scripts/1_aHISplex_noImputation.sh --help
 ```
+
+## Step 2 – Upload, merge and classify
 Upload the output (HISplex41_upload.csv) [here](https://hirisplex.erasmusmc.nl/). Download/save the resulting phenotype probability output file.
 >![where_to_upload](where_to_give_csv.jpg)
 >
@@ -64,4 +73,3 @@ ${aHIS_dir}/bin/./classifHISplex -short Complete_info.csv > classifications_shor
 ${aHIS_dir}/bin/./classifHISplex Complete_info.csv > classifications_long.csv
 ```
 Please look also at [Official Manual](https://hirisplex.erasmusmc.nl/pdf/hirisplex.erasmusmc.nl.pdf) if hair colour red or black is not chosen but p_value greater than 0.25 . 
-
