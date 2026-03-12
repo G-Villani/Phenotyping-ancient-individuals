@@ -37,7 +37,7 @@ Then, there are two ways to proceed:
 Follow the [aHISplex quickstart](https://github.com/zmaroti/aHISplex) which includes GLIMPSE2 imputation (very fast)(you need to install GLIMPSE2). Then go to [Step 2](#step-2--upload-merge-and-classify) .
 
 **Option B – Starting from already imputed data (BCF/VCF):**
-Use the modified script below (Note: 1 of the 41 variants, rs312262906, extremely rare (global MAF = 0.00078), is set at 0 in this case). See [Step 1](#step-1--extract-hirisplex-s-variants) .
+Use the modified script below (Note: missing variants will be set as NA, minimal impact if less than 3 missing). See [Step 1](#step-1--extract-hirisplex-s-variants) .
 
 ## Step 1 – Extract HIrisPlex-S variants
 Assuming we have already imputed data, we use the modified script 1_aHISplex_noImputation.sh:
